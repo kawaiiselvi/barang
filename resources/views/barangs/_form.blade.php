@@ -34,11 +34,11 @@
 	</div>
 </div>
 
-<div class="form-group{{ $errors->has('kategori') ? 'has-error' : '' }}">
-	{!! Form::label('kategori','Kategori',['class'=>'col-md-2 control-label']) !!}
+<div class="form-group{{ $errors->has('kategori_id') ? 'has-error' : '' }}">
+	{!! Form::label('kategori_id','Kategori',['class'=>'col-md-2 control-label']) !!}
 	<div class="col-md-4">
-		{!! Form::text('kategori',null,['class'=>'form-control']) !!}
-		{!! $errors->first('kategori', '<p class="help-block">:message</p>') !!}
+		{!! Form::select('kategori_id',App\Kategori::pluck('nama','id')->all(),null,['class'=>'js-selectize','placeholder'=>'Pilih Kategori Barang']) !!}
+		{!! $errors->first('title', '<p class="help-block">:message</p>') !!}
 	</div>
 </div>
 

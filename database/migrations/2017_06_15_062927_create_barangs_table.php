@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Support\Facades\Schema;
@@ -16,15 +17,15 @@ class CreateBarangsTable extends Migration
         Schema::create('barangs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->integer('amount')->unsigned();
-            $table->integer('stock')->unsigned();
-            $table->integer('kondisi')->unsigned();
-            $table->integer('kategori')->unsigned();
-            $table->integer('penanggung_id')->unsigned();
+            $table->integer('amount');
+            $table->integer('stock');
+            $table->string('kondisi');
+            $table->integer('kategori_id');
+            $table->integer('penanggung_id');
             $table->string('cover')->nullable();
             $table->timestamps();
 
-            $table->foreign('penanggung_id')->references('id')->on('penanggungs')->onUpdate('cascade')->onDelete('cascade');
+            // $table->foreign('penanggung_id')->references('id')->on('penanggungs')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

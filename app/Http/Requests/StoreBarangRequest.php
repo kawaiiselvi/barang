@@ -29,7 +29,7 @@ class StoreBarangRequest extends FormRequest
             'amount'=>'numeric',
             'stock'=>'numeric',
             'kondisi'=>'required',
-            'kategori'=>'required',
+            'kategori_id'=>'required',
             'penanggung_id'=>'required|exists:penanggungs,id',
             'cover'=>'image'
         ];

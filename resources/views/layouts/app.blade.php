@@ -56,9 +56,11 @@
                             <li><a href="{{ route('barangs.index') }}">Barang</a></li>
                             <li><a href="{{ route('members.index') }}">Member</a></li>
                             <li><a href="{{ route('statistics.index') }}">Peminjaman</a></li>
+                            <li><a href="{{ route('kategoris.index') }}">Kategori</a></li>
                         @endrole
                         @if(Auth::check())
                             <li><a href="{{ url('/settings/profile') }}">Profil</a></li>
+                            <li><a href="{{ url('/statisticsmember') }}">Peminjaman</a></li>
                         @endif
                     </ul>
 

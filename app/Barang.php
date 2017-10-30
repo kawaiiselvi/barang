@@ -44,6 +44,11 @@ class Barang extends Model
     	return $this->belongsTo('App\Penanggung');
     }
 
+    public function kategori()
+    {
+    	return $this->belongsTo('App\Kategori');
+    }
+
     public function borrowLogs()
     {
     	return $this->hasMany('App\borrowLog');

@@ -19,10 +19,12 @@ Route::get('/home', 'HomeController@index');
 
 Route::group(['prefix'=>'admin','middleware'=>['auth','role:admin']], function(){
 	Route::resource('penanggungs','PenanggungsController');
+	Route::resource('kategoris','KategorisController');
 	Route::resource('barangs','BarangsController');
 	Route::get('hardware','BarangsController@hardware');
 	Route::get('elektronik','BarangsController@elektronik');
 	Route::resource('members', 'MembersController');
+
 	Route::get('statistics',[
 		'as'=>'statistics.index',
 		'uses'=>'StatisticsController@index'
@@ -51,4 +53,5 @@ Route::post('settings/profile','SettingsController@updateProfile');
 Route::get('settings/password','SettingsController@editPassword');
 Route::post('settings/password','SettingsController@updatePassword');
 Route::get('auth/send-verification', 'Auth\RegisterController@sendVerification');
+Route::get('statisticsmember','StatisticsController@member');
 

@@ -14,7 +14,7 @@ class GuestController extends Controller
     public function index(Request $request, Builder $htmlBuilder)
     {
     	if ($request->ajax()){
-            $barangs = Barang::with(['penanggung']);
+            $barangs = Barang::with(['penanggung','kategori']);
             return Datatables::of($barangs)
             ->addColumn('stock',function($barang){
                 return $barang->stock;
@@ -34,7 +34,7 @@ class GuestController extends Controller
         ->addColumn(['data'=>'amount','name'=>'amount','title'=>'Jumlah'])
         ->addColumn(['data'=>'stock','name'=>'stock','title'=>'Stok','orderable'=>false,'searchable'=>false])
         ->addColumn(['data'=>'kondisi','name'=>'kondisi','title'=>'Kondisi'])
-        ->addColumn(['data'=>'kategori','name'=>'kategori','title'=>'Kategori'])
+        ->addColumn(['data'=>'kategori.nama','name'=>'kategori.nama','title'=>'Kategori'])
         ->addColumn(['data'=>'penanggung.name','name'=>'penanggung.name','title'=>'Penanggung Jawab'])
         ->addColumn(['data'=>'action','name'=>'action','title'=>'','orderable'=>false,'searchable'=>false]);
         return view('guest.index')->with(compact('html'));
@@ -43,7 +43,7 @@ class GuestController extends Controller
     public function hardware(Request $request, Builder $htmlBuilder)
     {
         if ($request->ajax()){
-            $barangs = Barang::with(['penanggung'])->where('kategori','=','hardware')->get();    
+            $barangs = Barang::with(['penanggung'])->where('kategori_id','=',1)->get();    
             return Datatables::of($barangs)
             ->addColumn('stock',function($barang){
                 return $barang->stock;
@@ -63,7 +63,6 @@ class GuestController extends Controller
         ->addColumn(['data'=>'amount','name'=>'amount','title'=>'Jumlah'])
         ->addColumn(['data'=>'stock','name'=>'stock','title'=>'Stok','orderable'=>false,'searchable'=>false])
         ->addColumn(['data'=>'kondisi','name'=>'kondisi','title'=>'Kondisi'])
-        ->addColumn(['data'=>'kategori','name'=>'kategori','title'=>'Kategori'])
         ->addColumn(['data'=>'penanggung.name','name'=>'penanggung.name','title'=>'Penanggung Jawab'])
         ->addColumn(['data'=>'action','name'=>'action','title'=>'','orderable'=>false,'searchable'=>false]);
         return view('guest.index')->with(compact('html'));
@@ -72,7 +71,7 @@ class GuestController extends Controller
     public function elektronik(Request $request, Builder $htmlBuilder)
     {
         if ($request->ajax()){
-            $barangs = Barang::with(['penanggung'])->where('kategori','=','elektronik')->get();    
+            $barangs = Barang::with(['penanggung'])->where('kategori_id','=',2)->get();    
             return Datatables::of($barangs)
             ->addColumn('stock',function($barang){
                 return $barang->stock;
@@ -92,7 +91,6 @@ class GuestController extends Controller
         ->addColumn(['data'=>'amount','name'=>'amount','title'=>'Jumlah'])
         ->addColumn(['data'=>'stock','name'=>'stock','title'=>'Stok','orderable'=>false,'searchable'=>false])
         ->addColumn(['data'=>'kondisi','name'=>'kondisi','title'=>'Kondisi'])
-        ->addColumn(['data'=>'kategori','name'=>'kategori','title'=>'Kategori'])
         ->addColumn(['data'=>'penanggung.name','name'=>'penanggung.name','title'=>'Penanggung Jawab'])
         ->addColumn(['data'=>'action','name'=>'action','title'=>'','orderable'=>false,'searchable'=>false]);
         return view('guest.index')->with(compact('html'));
